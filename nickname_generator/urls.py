@@ -17,7 +17,12 @@ Including another URLconf
 from django.urls import path
 from randomizer import views
 
+#This is our redirect hub lol.
 
+
+#add url to webpages
 urlpatterns = [
     path('', views.home),
+    path('randomnickname/', views.nickname, name="randomnickname"),
+    
 ]

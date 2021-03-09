@@ -1,6 +1,6 @@
 <h1>Randomnick</h1>
 
-<form action="">
+<form action="{% url 'randomnickname' %}">
     <select name="length">
         <option value="2">2</option>
         <option value="3">3</option>
@@ -11,5 +11,5 @@
 
     </select>
 
-    <input type="submit" value="alias">
+    <input type="submit" value="Generate alias">
 </form>
