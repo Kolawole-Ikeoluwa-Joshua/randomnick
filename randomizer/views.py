@@ -24,7 +24,8 @@ def nickname(request):
             result = list_of_names[i]
             result = result.strip()
 
-    if request.GET.get('length'):
+
+    if request.GET.get('length') and request.GET.get('firstname'):
 
         f=open("media/randomizer/docs/db.txt", "r")
         if f.mode == 'r':
@@ -43,4 +44,35 @@ def nickname(request):
             i = random.randint(0, random_length)
             result = bag[i]
 
-    return render(request, 'randomizer/nickname.html', {'names':result})
+   
+
+    if request.GET.get('secondname'):
+        
+        f2=open("media/randomizer/docs/db.txt", "r")
+        if f2.mode == 'r':
+            list_of_secondnames = f2.readlines()
+
+            # print first item in array
+            x = random.randint(0, int(240698))
+            
+
+            result = list_of_secondnames[x]
+            result = result.strip()
+        
+
+    if request.GET.get('secondname') and request.GET.get('secondlength'):
+        file = open("media/randomizer/docs/db.txt", "r")
+        if file.mode == 'r':
+            secondnames = file.readlines()
+            secondnamesbag = []
+
+            secondlength = int(request.GET.get('secondlength'))
+            for secondname in secondnames:
+                secondword = secondname.strip()
+                if len(secondword) == secondlength:
+                    secondnamesbag.append(secondword)
+            second_list_length = len(secondnamesbag)
+            j = random.randint(0,  second_list_length)
+            result = secondnamesbag[j]
+    
+    return render(request, 'randomizer/nickname.html', {'name':result})
