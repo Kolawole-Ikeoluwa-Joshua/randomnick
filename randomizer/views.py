@@ -224,8 +224,26 @@ def nickname(request):
 
             result = result1+' '+result2
         
+    if request.GET.get('firstname') and request.GET.get('specialchar'):
+        
+        f=open("media/randomizer/docs/db.txt", "r")
+        if f.mode == 'r':
+            list_of_names = f.readlines()
 
-
+            # print first item in array
+            special_char = list('!#$%^&*+')
+            i = random.randint(0, int(240698))
+            
+        
+            #result = list_of_names[i]
+            
+            
+            result1 = list_of_names[i]
+            result1 = result1.strip()
+            result2 = special_char[random.randint(0, 8)] 
+            
+            result = result1+''+result2
+            
 
 
         
